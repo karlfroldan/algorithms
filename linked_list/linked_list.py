@@ -5,12 +5,21 @@ class Node:
         self.key  = k 
         self.value= v 
     def __str__(self):
-        return "{} ".format(self.key)
+        return "{}".format(self.key)
 
 class LinkedList:
     def __init__(self):
         self.head = None
         self.tail = None
+
+    def __len__(self):
+        c = 0
+        n = self.head 
+        while n is not None:
+            c += 1
+            n = n.next
+        return c        
+
     def insert(self, k, v):
         new_node = Node(k, v)
         if self.head is None:
@@ -30,6 +39,17 @@ class LinkedList:
             else:
                 node = node.next
         return node
+    
+    def remove(self, x):
+        if x.next is None: #we're tail
+            self.tail = self.tail.prev
+        if x.prev is None: #we're head
+            self.head = self.head.next
+        if x.prev is not None:
+            x.prev.next = x.next
+        if x.next is not None:
+            x.next.prev = x.prev
+        
 
     def delete(self, k):
         node = self.head 
@@ -58,18 +78,8 @@ class LinkedList:
         node = self.head 
         return_str = ""
         while node is not None:
-            return_str += "{} ".format(node)
+            return_str += "{}".format(node)
             node = node.next
-        return return_str
-
-n = LinkedList()
-n.insert("hello", 10)
-n.insert("I am", 1)
-n.insert("Wallet", 20)
-
-find = n.search("Wallet")
-print("find: {}={}".format(find, find.value))
-
-n.delete("Wallet")
-
-print("The node is: \"{}\"".format(n))
+            if node is not None:
+                return_str += ", "
+        return "[{}]".format(return_str)

@@ -1,5 +1,6 @@
 import time
 import random
+import sys
 
 def msort(A):
     mergesort(A, 0, len(A)) 
@@ -27,17 +28,17 @@ def merge(A, p, q, r):
             A[k] = right[j]
             j += 1
 
-a = [1,2,3,4,5,0,9,7,3]
-msort(a)
-print(a)
 
-n = 10000
+n = int(sys.argv[1])
 b = []
 for i in range(n):
     r = random.randint(0, 1000)
     b.append(r)
-print("Begin sorting")
+
 begin = time.time_ns()
 msort(b)
 end = time.time_ns()
-print("merge sort finished sorting {} elements in {}ns".format(n, (end - begin)))
+end = time.time_ns()
+ns = end - begin
+s = ns / 1000000000
+print("merge sort finished sorting {} elements in {}ns or {}s".format(n, ns, s))

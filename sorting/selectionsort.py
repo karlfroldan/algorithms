@@ -1,5 +1,6 @@
 import time 
 import random
+import sys
 
 def selectionsort(A): 
     for i in range(len(A)):
@@ -10,17 +11,16 @@ def selectionsort(A):
         # Swap
         A[i], A[min_idx] = A[min_idx], A[i]
 
-a = [1,2,3,4,5,0,9,7,3]
-selectionsort(a)
-print(a)
-
-n = 10000
+n = int(sys.argv[1])
 b = []
 for i in range(n):
     r = random.randint(0, 1000)
     b.append(r)
-print("Begin sorting")
+
 begin = time.time_ns()
 selectionsort(b)
 end = time.time_ns()
-print("selection sort finished sorting {} elements in {}ns".format(n, (end - begin)))
+end = time.time_ns()
+ns = end - begin
+s = ns / 1000000000
+print("selection sort finished sorting {} elements in {}ns or {}s".format(n, ns, s))

@@ -1,5 +1,6 @@
 import time
 import random
+import sys
 
 def isort(A):
     for j in range(1, len(A)):
@@ -11,17 +12,16 @@ def isort(A):
             i -= 1
         A[i + 1] = key
 
-a = [1,2,3,4,5,0,9,7,3]
-isort(a)
-print(a)
 
-n = 10000
+n = int(sys.argv[1])
 b = []
 for i in range(n):
     r = random.randint(0, 1000)
     b.append(r)
-print("Begin sorting")
 begin = time.time_ns()
 isort(b)
 end = time.time_ns()
-print("merge sort finished sorting {} elements in {}ns".format(n, (end - begin)))
+end = time.time_ns()
+ns = end - begin
+s = ns / 1000000000
+print("insertion sort finished sorting {} elements in {}ns or {}s".format(n, ns, s))
