@@ -1,12 +1,8 @@
 #!/bin/sh
 
-#FILES=`ls`
-
-RANDNUMBERS=$1
-
 for FILE in *; do
-    if [ $FILE != run.sh ] 
+    if [ $FILE != run.sh ] && [ $FILE != random.txt ]
     then
-        python3 $FILE $RANDNUMBERS
+        python3 $FILE
     fi
 done

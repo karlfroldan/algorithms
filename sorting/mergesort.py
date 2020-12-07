@@ -29,16 +29,13 @@ def merge(A, p, q, r):
             j += 1
 
 
-n = int(sys.argv[1])
-b = []
-for i in range(n):
-    r = random.randint(0, 1000)
-    b.append(r)
-
+xs = open("random.txt", "r")
+xs = list(map(int, list(xs)[0].split()))
 begin = time.time_ns()
-msort(b)
+msort(xs)
 end = time.time_ns()
 end = time.time_ns()
 ns = end - begin
 s = ns / 1000000000
+n = len(xs)
 print("merge sort finished sorting {} elements in {}ns or {}s".format(n, ns, s))

@@ -15,22 +15,19 @@ class Heap:
         self.heapsort()
 
     def max_heapify(self, i):
-        """
-        Maintains the heap property of a subtree
-        """
-        l = left(i)
-        r = right(i)
-        if l <= self.heap_size and self.A[l] > self.A[i]:
-            largest = l
-        else:
+        while i < self.heap_size:
+            l, r = left(i), right(i)
             largest = i
-        if r <= self.heap_size and self.A[r] > self.A[largest]:
-            largest = r
-        
-        if largest != i:
-            self.A[i], self.A[largest] = self.A[largest], self.A[i]
-            self.max_heapify(largest)     
-
+            if l <= self.heap_size and self.A[l] > self.A[largest]:
+                largest = l
+            if r <= self.heap_size and self.A[r] > self.A[largest]:
+                largest = r 
+            if largest != i:
+                # Exchange
+                self.A[i], self.A[largest] = self.A[largest], self.A[i]
+                i = largest
+            else:
+                break
     def build_max_heap(self):
         self.heap_size = self.length
         for i in range(self.length // 2, -1, -1):
@@ -55,4 +52,4 @@ end = time.time_ns()
 ns = end - begin
 s = ns / 1000000000
 n = len(xs)
-print("heap sort finished sorting {} elements in {}ns or {}s".format(n, ns, s))
+print("heap sort(iterative) finished sorting {} elements in {}ns or {}s".format(n, ns, s))

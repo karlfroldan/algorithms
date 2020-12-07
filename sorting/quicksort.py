@@ -26,14 +26,13 @@ def partition(A, p, r):
     swap(A, i + 1, r)
     return i + 1
 
-n = int(sys.argv[1])
-b = []
-for i in range(n):
-    r = random.randint(0, 1000)
-    b.append(r)
+xs = open("random.txt", "r")
+xs = list(map(int, list(xs)[0].split()))
 begin = time.time_ns()
-qsort(b)
+qsort(xs)
+end = time.time_ns()
 end = time.time_ns()
 ns = end - begin
 s = ns / 1000000000
-print("quicksort finished sorting {} elements in {}ns or {}s".format(n, ns, s))
+n = len(xs)
+print("quick sort finished sorting {} elements in {}ns or {}s".format(n, ns, s))
