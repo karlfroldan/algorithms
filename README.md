@@ -61,7 +61,7 @@
     </tr>
     <tr>
         <td>Priority Queues</td>
-        <td>&nbsp;</td>
+        <td>✓</td>
     </tr>
     <tr>
         <td>Deque</td>
