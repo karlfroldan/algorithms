@@ -81,7 +81,7 @@
     </tr>
     <tr>
         <td>Binary Search Trees</td>
-        <td>&nbsp;</td>
+        <td>Partial</td>
     </tr>
     <tr>
         <td>Red-Black Trees</td>
@@ -130,7 +130,7 @@
         <td>&nbsp;</td>
     </tr>
     <tr>
-        <td colspan="2" align="center"><i>Elementary Garaph Algorithms</i></td>
+        <td colspan="2" align="center"><i>Elementary Graph Algorithms</i></td>
     </tr>
     <tr>
         <td>Breadth-first search</td>
@@ -182,6 +182,17 @@
     </tr>
     <tr>
         <td>Maximum bipartite matching</td>
+        <td>&nbsp;</td>
+    </tr>
+    <tr>
+        <td colspan="2" align="center"><i>Other Algorithms</i></td>
+    </tr>
+    <tr>
+        <td>Union Find</td>
+        <td>&nbsp;</td>
+    </tr>
+    <tr>
+        <td>Euclidean Algorithm</td>
         <td>&nbsp;</td>
     </tr>
 </table>
