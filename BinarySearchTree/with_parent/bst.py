@@ -52,6 +52,26 @@ def predecessor(x):
         p = p.parent 
     return p
 
+def insert2(parent, x, z):
+    if x is None:
+        z.parent = parent
+        if z.key < parent.key:
+            parent.left = z 
+        else:
+            parent.right = z 
+    elif z.key < x.key:
+        insert2(x, x.left, z)
+    else:
+        insert2(x, x.right, z)
+
+def insert(T, k, v=None):
+    if T is None:
+        T = Node(k ,v)
+    elif T.key > k:
+        insert(T.left, k, v)
+    else:
+        insert(T.right, k, v)
+
 class Node:
     def __init__(self, k, v):
         self.key = k
@@ -66,42 +86,57 @@ class Node:
             return "Node (key: {}, value: {})".format(self.key, self.value)
 
 class BinarySearchTree:
-    def __init__(self):
+    def __init__(self, arr=None):
         self.root   = None
+        if arr is not None:
+            for x in arr:
+                self.recursive_insert(x)
 
     def inorder_tree_walk(self, x):
+        """
+        Results in sorted elements
+        """
         if x is not None:
             self.inorder_tree_walk(x.left)
             print(str(x))
             self.inorder_tree_walk(x.right)
     
-    def insert(self, k, v=None):
-        if v is None:
-            v = k
+    def recursive_insert(self, k, v=None):
         n = Node(k, v)
-        y = None 
-        x = self.root
-
-        # x will be None if there is no element yet
-        while x is not None:
-            # y will be the parent of the new node
-            y = x
-            # If the new n's key is less than x.key,
-            # we go to the left of x
-            if n.key < x.key:
-                x = x.left
-            else: # Otherwise, it's the right for us
-                x = x.right 
-        # Set the parent to y
-        n.parent = y
-        if y is None:
-            # Tree is empty
-            self.root = n
-        elif n.key < y.key:
-            # We will insert to the left of y
-            y.left = n 
+        if self.root is None:
+            self.root = n 
         else:
-            y.right = n
+            insert2(None, self.root, n)
+
+    def insert(self, k, v=None):
+        self.recursive_insert(k, v)
+    # def insert(self, k, v=None):
+    #     if v is None:
+    #         v = k
+    #     n = Node(k, v)
+    #     y = None 
+    #     x = self.root
+
+    #     # x will be None if there is no element yet
+    #     while x is not None:
+    #         # y will be the parent of the new node
+    #         y = x
+    #         # If the new n's key is less than x.key,
+    #         # we go to the left of x
+    #         if n.key < x.key:
+    #             x = x.left
+    #         else: # Otherwise, it's the right for us
+    #             x = x.right 
+    #     # Set the parent to y
+    #     n.parent = y
+    #     if y is None:
+    #         # Tree is empty
+    #         self.root = n
+    #     elif n.key < y.key:
+    #         # We will insert to the left of y
+    #         y.left = n 
+    #     else:
+    #         y.right = n
     
     def search(self, k):
         # Unlike CLRS, we will begin at the root of the tree
