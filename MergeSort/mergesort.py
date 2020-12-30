@@ -1,9 +1,6 @@
-import time
-import random
-import sys
-
 def msort(A):
     mergesort(A, 0, len(A)) 
+    
 def mergesort(A, p, r):
     if p < r - 1:
         q = (p + r) // 2
@@ -27,15 +24,3 @@ def merge(A, p, q, r):
         else:
             A[k] = right[j]
             j += 1
-
-
-xs = open("random.txt", "r")
-xs = list(map(int, list(xs)[0].split()))
-begin = time.time_ns()
-msort(xs)
-end = time.time_ns()
-end = time.time_ns()
-ns = end - begin
-s = ns / 1000000000
-n = len(xs)
-print("merge sort finished sorting {} elements in {}ns or {}s".format(n, ns, s))
