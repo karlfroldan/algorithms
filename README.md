@@ -81,7 +81,7 @@
     </tr>
     <tr>
         <td>Binary Search Trees</td>
-        <td>Partial</td>
+        <td>✓</td>
     </tr>
     <tr>
         <td>Red-Black Trees</td>
