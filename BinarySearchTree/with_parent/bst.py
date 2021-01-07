@@ -52,17 +52,19 @@ def predecessor(x):
         p = p.parent 
     return p
 
-def insert2(parent, x, z):
+def insert2(x, p, z):
+    #print("x={} | p={} | z={}".format(x, p, z))
     if x is None:
-        z.parent = parent
-        if z.key < parent.key:
-            parent.left = z 
+        z.parent = p
+        if z.key < p.key:
+            z.parent.left = z
         else:
-            parent.right = z 
-    elif z.key < x.key:
-        insert2(x, x.left, z)
+            z.parent.right = z
     else:
-        insert2(x, x.right, z)
+        if x.key < z.key:
+            insert2(x.right, x, z)
+        else:
+            insert2(x.left, x, z)
 
 def insert(T, k, v=None):
     if T is None:
@@ -106,7 +108,8 @@ class BinarySearchTree:
         if self.root is None:
             self.root = n 
         else:
-            insert2(None, self.root, n)
+            #print("n={}".format(n))
+            insert2(self.root, None, n)
 
     def insert(self, k, v=None):
         self.recursive_insert(k, v)

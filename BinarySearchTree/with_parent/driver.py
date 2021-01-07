@@ -2,14 +2,14 @@ from bst import BinarySearchTree
 
 bst = BinarySearchTree()
 
-bst.insert(120)
-bst.insert(20)
-bst.insert(-43)
-bst.insert(100)
-bst.insert(200)
-bst.insert(54)
-bst.insert(150)
-bst.insert(-20000)
+bst.recursive_insert(120)
+bst.recursive_insert(20)
+bst.recursive_insert(-43)
+bst.recursive_insert(100)
+bst.recursive_insert(200)
+bst.recursive_insert(54)
+bst.recursive_insert(150)
+bst.recursive_insert(-20000)
 
 bst.inorder_tree_walk(bst.root)
 print("root: {}".format(bst.root))
