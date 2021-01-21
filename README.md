@@ -96,7 +96,7 @@
     </tr>
     <tr>
         <td>Rod-Cutting Algorithm</td>
-        <td>&nbsp;</td>
+        <td>✓</td>
     </tr>
     <tr>
         <td>Matrix-Chain Multiplication</td>
