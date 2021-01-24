@@ -195,4 +195,8 @@
         <td>Euclidean Algorithm</td>
         <td>&nbsp;</td>
     </tr>
+    <tr>
+        <td>Fibonacci Sequence</td>
+        <td>✓</td>
+    </tr>
 </table>
