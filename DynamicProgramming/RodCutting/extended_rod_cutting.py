@@ -26,17 +26,17 @@ def print_solution(p, n):
 
 table = [
     1,  # $1 for 1-inch
-    3,  # $3 for 2-inch
-    5,  # $4 for 3-inch
-    6,  # $6 for 4-inch
-    9,  # $9 for 5-inch
-    9,  # $13 for 6-inch
-    12, # $17 for 7-inch
-    13, # 8
-    16, # 9
-    26, # 10
-    28, # 11
-    30, # 12
+    5,  # $3 for 2-inch
+    8,  # $4 for 3-inch
+    9,  # $6 for 4-inch
+    10,  # $9 for 5-inch
+    17,  # $13 for 6-inch
+    17, # $17 for 7-inch
+    20, # 8
+    24, # 9
+    28, # 10
+    30, # 11
+    31, # 12
     32, # 13
     38, # 14
     39, # 15
