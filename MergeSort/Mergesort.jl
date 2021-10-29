@@ -1,15 +1,20 @@
 module Mergesort 
     export mergesort!
 
-    function merge!(arr::Array{T, 1}, p::Int, m::Int, q::Int) where (T <: Number)
+    NumOrChar = Union{Number, Char}
+
+    function merge!(arr::Array{T, 1}, p::Int, m::Int, q::Int) where (T <: NumOrChar)
         n₁ = m - p + 1
         n₂ = q - m
 
         # Create temporary arrays 
-        left = zeros(n₁ + 1)
-        right = zeros(n₂ + 1)
+        left = Array{T, 1}(undef, n₁ + 1)
+        right = Array{T, 1}(undef, n₂ + 1)
 
         # Save everything from the left side of the array to the left array 
+        # left[1:n₁] .= arr[p : p + n₁ - 1]
+        # right[1:n₂] .= arr[m : m + n₂ - 1]
+
         for i ∈ 1:n₁
             left[i] = arr[p + i - 1] 
         end
@@ -21,8 +26,8 @@ module Mergesort
         # Create sentinel values
         # The for loop later will never reach this because
         # we only have to look at p-q elements while the arrays has (p-q)+2 elements.
-        left[n₁ + 1] = Inf
-        right[n₂ + 1] = Inf 
+        left[n₁ + 1] = typemax(T)
+        right[n₂ + 1] = typemax(T)
 
         i, j = (1, 1)
         
@@ -38,7 +43,7 @@ module Mergesort
         end
     end
 
-    function msort!(arr::Array{T, 1}, p::Int, q::Int) where (T <: Number)
+    function msort!(arr::Array{T, 1}, p::Int, q::Int) where (T <: NumOrChar)
         if p < q 
             mid = (p + q) ÷ 2
 
@@ -48,7 +53,7 @@ module Mergesort
         end
     end
 
-    function mergesort!(arr::Array{T, 1}) where (T <: Number)
+    function mergesort!(arr::Array{T, 1}) where (T <: NumOrChar)
         msort!(arr, 1, length(arr))
     end
 end

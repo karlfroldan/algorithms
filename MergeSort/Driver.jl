@@ -1,13 +1,14 @@
 include("Mergesort.jl")
 
 using .Mergesort 
+using Random: shuffle
 
 n = 10000000
 
 arr₁ = [1, 2, 3, 4, 1, 2, 3]
-arr₂ = [1, 6, 4, 2, π]
+arr₂ = 'a':'z' |> shuffle
 rand1 = rand(50)
-rand2 = rand(n)
+rand2 = 1:n |> shuffle
 
 arr₃ = deepcopy(arr₁)
 arr₄ = deepcopy(arr₂)
