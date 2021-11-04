@@ -17,7 +17,10 @@ open("graph", "r") do file
     end
 end
 
-@show G
+print_adjacency_list(G)
 
-G′ = bfs(G, 1)
-@show G′
+println()
+println("After BFS")
+G′ = bfs(G, 10)
+G = to_adjacency_list(G′)
+print_adjacency_list(G)
