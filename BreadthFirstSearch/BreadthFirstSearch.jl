@@ -46,7 +46,7 @@ module BreadthFirstSearch
 
         # Loop through all vertices in G.
         # If we see, s, we mark it as gray instead of white.
-        for (idx, adj) ∈ enumerate(G) 
+        for idx ∈ 1:length(G) 
             if s == idx 
                 G′[s] = Vertex(s, nothing, 0)
                 push!(searched, s)
