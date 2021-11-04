@@ -153,7 +153,11 @@
         <td>&nbsp;</td>
     </tr>
     <tr>
-        <td>Knuth-Kruskal-Prim Algorithm</td>
+        <td>Kruskal's Algorithm</td>
+        <td>&nbsp;</td>
+    </tr>
+    <tr>
+        <td>Prim's Algorithm</td>
         <td>&nbsp;</td>
     </tr>
     <tr>
