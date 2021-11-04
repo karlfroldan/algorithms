@@ -134,7 +134,7 @@
     </tr>
     <tr>
         <td>Breadth-first search</td>
-        <td>&nbsp;</td>
+        <td>✓</td>
     </tr>
     <tr>
         <td>Depth-first search</td>
