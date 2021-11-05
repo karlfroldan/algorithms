@@ -2,11 +2,30 @@ module BreadthFirstSearch
     using DataStructures
 
     export Vertex, bfs, to_adjacency_list, print_adjacency_list
+    export get_path
 
     mutable struct Vertex 
         label::Int
         π::Union{Int, Nothing}
         d::Int
+    end
+
+    function get_path(G::Vector{Vertex}, s::Int, v::Int)
+        P = Vector{Int}()
+
+        get_path!(G, P, s, v)
+        return P
+    end
+
+    function get_path!(G::Vector{Vertex}, P::Vector{Int}, s::Int, v::Int)
+        if s == v 
+            push!(P, s)
+        elseif G[v].π === nothing 
+            nothing 
+        else 
+            get_path!(G, P, s, G[v].π)
+            push!(P, v)
+        end
     end
 
     function print_adjacency_list(G::Array{Vector{Int}, 1})
