@@ -103,10 +103,6 @@
         <td>&nbsp;</td>
     </tr>
     <tr>
-        <td>Dynamic Programming</td>
-        <td>&nbsp;</td>
-    </tr>
-    <tr>
         <td>Longest Common Subsequence</td>
         <td>&nbsp;</td>
     </tr>
@@ -138,7 +134,7 @@
     </tr>
     <tr>
         <td>Depth-first search</td>
-        <td>&nbsp;</td>
+        <td>✓</td>
     </tr>
     <tr>
         <td>Topological Sort</td>
