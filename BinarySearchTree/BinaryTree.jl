@@ -2,6 +2,9 @@ module BinaryTree
 
     export new_tree, subtree_insert_right!, subtree_insert_left!, Node, print_tree
     export successor, predecessor, subtree_delete!
+    export BinTree, emptytree, Node
+    export add_to_left!, add_to_right!
+    export hasleft, hasright
 
     mutable struct Node{T}
         # We can use depth for printing
@@ -23,6 +26,19 @@ module BinaryTree
         return BinTree{T}(node)
     end
 
+    function add_to_left!(parent::Node{T}, child::Node{T}) where T <: Any 
+        parent.left = child 
+        child.parent = parent 
+        child.depth = parent.depth + 1
+    end
+
+    function add_to_right!(parent::Node{T}, child::Node{T}) where T <: Any 
+        parent.right = child 
+        child.parent = parent
+        child.depth = parent.depth + 1
+    end
+
+    emptytree(tree::BinTree{T}) where T <: Any = tree.root === nothing
     hasright(node::Node{T}) where T <: Any = node.right ≠ nothing 
     hasleft(node::Node{T}) where T<: Any = node.left ≠ nothing
     hasparent(node::Node{T}) where T <: Any = node.parent ≠ nothing
@@ -42,7 +58,7 @@ module BinaryTree
 
         
         if node ≠ nothing 
-            print_string = (" " ^ ((depth + 1) * 2)) * "- " 
+            print_string = "|" * (" " ^ ((depth + 1) * 2)) * "- " 
             print_string = print_string * string(node.item)
             println(print_string)
         end
