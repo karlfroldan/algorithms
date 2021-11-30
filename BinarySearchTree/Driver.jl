@@ -17,7 +17,32 @@ insert_bst!(tree, 24)
 insert_bst!(tree, 21)
 insert_bst!(tree, 25)
 
+
 print_tree(tree)
 
-n = find(tree, 24)
-print(n.item)
+n = find(tree, 9)
+delete_bst!(tree, n)
+
+println()
+println("Inorder property should hold")
+
+print_space(s) = print("$(s.item) ")
+
+inorder_traversal(tree.root, print_space)
+println()
+print_tree(tree)
+println()
+delete_bst!(tree, tree.root)
+inorder_traversal(tree.root, print_space)
+println()
+print_tree(tree)
+
+println("\nAVL Tree Balancing")
+insert_bst!(tree, 100)
+insert_bst!(tree, 101)
+insert_bst!(tree, 99)
+println()
+delete_bst!(tree, tree.root)
+inorder_traversal(tree.root, print_space)
+println()
+print_tree(tree)

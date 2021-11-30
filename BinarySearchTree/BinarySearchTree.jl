@@ -6,6 +6,8 @@ module BinarySearchTree
 
     export print_tree, insert_bst!
     export successor, predecessor, find
+    export Node, BinTree
+    export inorder_traversal, delete_bst!
 
     function new(item)
         new_tree(item)
@@ -13,17 +15,19 @@ module BinarySearchTree
 
     function insert_bst!(tree :: BinTree{T}, item :: T) where T <: Union{Char, Number}
         if emptytree(tree)
-            node = Node(0, item, nothing, nothing, nothing)
+            node = Node(0, 1, item, nothing, nothing, nothing)
             tree.root = node
         else 
-            new = Node{T}(0, item, nothing, nothing, nothing)
+            new = Node{T}(0, 1, item, nothing, nothing, nothing)
 
             insert_bst_aux!(tree.root, new)
         end
     end
 
     function insert_bst_aux!(current::Node{T}, new::Node{T}) where T <: Union{Char, Number}
-        if new.item <= current.item
+        if new.item == current.item 
+            # Do nothing
+        elseif new.item < current.item
             if !hasleft(current)
                 add_to_left!(current, new)
             else
@@ -42,15 +46,21 @@ module BinarySearchTree
         find_aux(tree.root, key)
     end
 
-    function find_aux(node::Node{T}, key :: T) where T <: Union{Char, Number}
-        if node.item == key 
+    function find_aux(node::Union{Nothing, Node{T}}, key :: T) where T <: Union{Char, Number}
+        if node === nothing 
+            return nothing
+        elseif node.item == key 
             return node 
         else 
-            if node.item <= key 
+            if key <= node.item 
                 find_aux(node.left, key)
             else
                 find_aux(node.right, key)
             end
         end
+    end
+
+    function delete_bst!(tree :: BinTree{T}, node :: Node{T}) where T <: Union{Char, Number}
+        subtree_delete!(tree, node)
     end
 end
