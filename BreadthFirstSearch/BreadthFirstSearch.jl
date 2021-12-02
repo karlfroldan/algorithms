@@ -55,14 +55,14 @@ module BreadthFirstSearch
     end
 
     function radius(G::Array{Vector{Int}, 1})
-        max_radii = 0
+        min_ecc = typemax(Int64) # similar to min_ecc = ∞
 
         for idx ∈ 1:length(G)
             eccentricity = ecc(G, idx)
-            max_radii = max(max_radii, eccentricity)
+            min_ecc = min(min_ecc, eccentricity)
         end
 
-        return max_radii
+        return min_ecc
     end
 
     function ecc(G::Array{Vector{Int}, 1}, s::Int)
@@ -73,7 +73,7 @@ module BreadthFirstSearch
         G′ = Vector{Vertex}(undef, length(G))
         Q = Queue{Int}()
 
-        max_radii = 0
+        max_dist = 0
         # Loop through all vertices in G.
         # If we see, s, we mark it as gray instead of white.
         for idx ∈ 1:length(G) 
@@ -105,7 +105,7 @@ module BreadthFirstSearch
                     node.π = u 
                     node.d = G′[u].d + 1
 
-                    max_radii = max(node.d, max_radii)
+                    max_dist = max(node.d, max_dist)
 
                     # Change the color of v to gray 
                     delete!(not_searched, v)
@@ -116,7 +116,7 @@ module BreadthFirstSearch
             end
         end
 
-        return max_radii
+        return max_dist
     end
 
     function bfs(G::Array{Vector{Int}, 1}, s::Int)
