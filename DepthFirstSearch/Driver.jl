@@ -12,8 +12,8 @@ open("graph", "r") do file
     lines = readlines(file)
     for (idx, line) ∈ enumerate(lines)
         line = split(line)
-        adjacent_vertices = line .|> s -> parse(Int, s)
-        push!(G, (Vertex(idx, nothing, 0, :white, 0, adjacent_vertices)))
+        adjacent_vertices :: Vector{Int64} = line .|> s -> parse(Int64, s)
+        push!(G, (Vertex(idx, nothing, nothing, 0, :white, 0, adjacent_vertices)))
     end
 end
 
