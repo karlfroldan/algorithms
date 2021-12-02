@@ -142,7 +142,7 @@
     </tr>
     <tr>
         <td>Topological Sort</td>
-        <td>&nbsp;</td>
+        <td>✓</td>
     </tr>
     <tr>
         <td>Strongly connected components</td>
