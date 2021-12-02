@@ -26,3 +26,7 @@ G = to_adjacency_list(G′)
 print_adjacency_list(G)
 println()
 @show get_path(G′, 10, 11)
+
+println()
+println("Furthermore, the eccentricity of G from vertex 10 is $(ecc(G, 10))")
+println("The radius of G is $(radius(G))")
