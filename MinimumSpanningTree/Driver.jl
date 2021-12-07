@@ -50,4 +50,7 @@ println("Initial graph")
 print_graph(g)
 
 
-@show kruskal(g)
+ks = kruskal(g)
+g′ = new_graph(g, ks)
+println("\nAfter Kruskal")
+print_graph(g′)

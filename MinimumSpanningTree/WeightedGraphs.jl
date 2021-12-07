@@ -43,6 +43,26 @@ module WeightedGraphs
         WeightedGraph(adj, Dict())
     end
 
+    function new_graph(g′::WeightedGraph, edges :: Set{Set{Int}})
+        vertices = Set{Int}()
+        weights = g′.weights
+
+        for edge ∈ edges 
+            u, v = edge_elements(edge)
+            push!(vertices, u)
+            push!(vertices, v)
+        end
+        vertices = vertices |> collect |> sort 
+        g = new_graph(maximum(vertices))
+        
+        for edge ∈ edges 
+            u, v = edge_elements(edge)
+            w = weight(g′, u, v)
+            add_edge!(g, u, v, w)
+        end
+        g
+    end
+
     function add_edge!(g :: WeightedGraph, src, dest, weight)
         push!(g.adjacency[src], dest)
         push!(g.adjacency[dest], src)
