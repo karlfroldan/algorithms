@@ -1,9 +1,9 @@
-include("./WeightedGraphs.jl")
-#include("./Kruskal.jl")
+include("./Kruskal.jl")
 
-using .WeightedGraphs 
 using DataStructures
-#using .Kruskal
+using Graphs, SimpleWeightedGraphs, GraphPlot
+using .Kruskal
+using Cairo, Compose
 
 function get_edge_list(filename)
     edges′ = Vector()
@@ -16,41 +16,36 @@ function get_edge_list(filename)
     edges′
 end
 
-function kruskal(g)
-    A = Set{Set{Int}}() # A set of edges 
-    T = IntDisjointSets(order(g)) # trees in the forest
-    
-    pq = PriorityQueue{Set{Int}, Number}()
-    # We want to sort the edges in non-decreasing order by weight
-    for edge ∈ edges(g)
-        u, v = edge_elements(edge)
-        w = weight(g, u, v)
-        enqueue!(pq, Set(edge), w)
-    end
-    
-    # Take elements from the priority queue
-    while !isempty(pq)
-        u, v = edge_elements(dequeue!(pq))
-        if !in_same_set(T, u, v)
-            push!(A, Set([u, v]))
-            union!(T, u, v)
-        end
-    end
+function graph_from_iter(edges::Array{T, 1}) where T <: AbstractEdge
+    srcs = [edge.src for edge ∈ edges]
+    dsts = [edge.dst for edge ∈ edges]
+    num_vert = max(maximum(srcs), maximum(dsts))
 
-    return A
+    g = SimpleWeightedGraph(num_vert)
+
+    for edge ∈ edges 
+        u, v, w = edge.src, edge.dst, edge.weight 
+        add_edge!(g, u, v, w)
+    end
+    g
 end
 
-g = new_graph(9)
+
+g = SimpleWeightedGraph(9)
 
 for (s, d, w) ∈ get_edge_list("graph") 
     add_edge!(g, s, d, w)
 end
 
 println("Initial graph")
-print_graph(g)
+@show g
+no_mst = gplot(g)
+draw(PNG("no_mst.png", 16cm, 16cm), no_mst)
 
-
+println("After Kruskal")
 ks = kruskal(g)
-g′ = new_graph(g, ks)
+
+g′ = graph_from_iter(ks)
 println("\nAfter Kruskal")
-print_graph(g′)
+@show g′
+draw(PNG("kruskal.png", 16cm, 16cm), gplot(g′))

@@ -149,12 +149,8 @@
         <td>&nbsp;</td>
     </tr>
     <tr>
-        <td>Minimum Spanning Tree</td>
-        <td>&nbsp;</td>
-    </tr>
-    <tr>
         <td>Kruskal's Algorithm</td>
-        <td>&nbsp;</td>
+        <td>✓</td>
     </tr>
     <tr>
         <td>Prim's Algorithm</td>
