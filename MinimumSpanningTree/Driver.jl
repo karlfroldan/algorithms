@@ -2,7 +2,7 @@ include("./Kruskal.jl")
 
 using DataStructures
 using Graphs, SimpleWeightedGraphs, GraphPlot
-using .Kruskal
+using .Kruskal, .Prim
 using Cairo, Compose
 
 function get_edge_list(filename)

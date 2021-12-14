@@ -158,7 +158,7 @@
     </tr>
     <tr>
         <td>Bellman Ford Algorithm</td>
-        <td>&nbsp;</td>
+        <td>✓</td>
     </tr>
     <tr>
         <td>Dijkstra Algorithm</td>
