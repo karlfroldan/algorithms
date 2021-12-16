@@ -162,7 +162,7 @@
     </tr>
     <tr>
         <td>Dijkstra Algorithm</td>
-        <td>&nbsp;</td>
+        <td>✓</td>
     </tr>
     <tr>
         <td>Floyd-Warshall Algorithm</td>
