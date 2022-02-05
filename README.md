@@ -199,4 +199,11 @@
         <td>Fibonacci Sequence</td>
         <td>✓</td>
     </tr>
+    <tr>
+	<td colspan="2" align="center"><i>Backtracking Algorithms</i></td>
+    </tr>
+    <tr>
+	<td>Knight's Tour Problem</td>
+	<td>✓</td>
+    </tr>
 </table>
