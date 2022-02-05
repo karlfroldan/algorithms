@@ -206,4 +206,8 @@
 	<td>Knight's Tour Problem</td>
 	<td>✓</td>
     </tr>
+    <tr>
+	<td>Sudoku Backtracking</td>
+	<td>✓</td>
+    </tr>
 </table>
