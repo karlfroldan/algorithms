@@ -1,5 +1,5 @@
-all: Driver.cpp
-	clang++ Driver.cpp -o BST 
+all: BSTDriver.cpp AVLDriver.cpp  
+	clang++ BSTDriver.cpp -o BST 
 
-rm:
+clean:
 	rm BST

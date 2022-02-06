@@ -11,12 +11,20 @@ struct Node
     Node* parent;
     Node* left;
     Node* right;
+    int height;
 };
 
 template <typename T>
 struct Tree {
     Node<T>* root;
 };
+
+template <typename T>
+Tree<T> emptytree()
+{
+    Tree<T>* t = new Tree<T> {nullptr};
+    return *t;
+}
 
 template <typename T>
 bool has_no_children(Node<T>* n)
@@ -102,20 +110,23 @@ template <typename T>
 Node<T>* minimum(Tree<T>* t) { return minimum(t->root); }
 
 template<typename T>
-void insert(Tree<T>* t, T key)
+Node<T>* insert(Tree<T>* t, T key)
 {
     Node<T>* n = new Node<T> {
-        key, nullptr, nullptr, nullptr
+        key, nullptr, nullptr, nullptr, 0
     };
 
     if (t->root == nullptr)
+    {
         t->root = n;
+        return t->root;
+    }
     else 
-        insert(t->root, n);
+        return insert(t->root, n);
 }
 
 template <typename T>
-void insert(Node<T>* p, Node<T>* n) 
+Node<T>* insert(Node<T>* p, Node<T>* n) 
 {
     if (n->key < p->key)
     {
@@ -123,9 +134,10 @@ void insert(Node<T>* p, Node<T>* n)
         {
             n->parent = p;
             p->left = n;
+            return n;
         }
         else 
-            insert(p->left, n);
+            return insert(p->left, n);
     }
     else if (n->key > p->key)
     {
@@ -133,10 +145,12 @@ void insert(Node<T>* p, Node<T>* n)
         {
             n->parent = p;
             p->right = n;
+            return n;
         }
         else
-            insert(p->right, n);
+            return insert(p->right, n);
     }
+    return nullptr;
 }
 
 template <typename T>

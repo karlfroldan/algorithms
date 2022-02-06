@@ -6,7 +6,7 @@ typedef Tree<int> int_tree;
 int main(int argc, char* argv[])
 {
     int input;
-    int_tree t;
+    int_tree t = emptytree<int>();
 
     while (std::cin >> input)
     {
