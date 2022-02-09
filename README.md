@@ -200,6 +200,10 @@
         <td>✓</td>
     </tr>
     <tr>
+        <td>Longest Increasing Subsequence</td>
+        <td>✓</td>
+    </tr>
+    <tr>
 	<td colspan="2" align="center"><i>Backtracking Algorithms</i></td>
     </tr>
     <tr>
