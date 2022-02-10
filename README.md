@@ -207,11 +207,11 @@
 	<td colspan="2" align="center"><i>Backtracking Algorithms</i></td>
     </tr>
     <tr>
-	<td>Knight's Tour Problem</td>
-	<td>✓</td>
+        <td>Knight's Tour Problem</td>
+        <td>✓</td>
     </tr>
     <tr>
-	<td>Sudoku Backtracking</td>
-	<td>✓</td>
+        <td>Sudoku Backtracking</td>
+        <td>✓</td>
     </tr>
 </table>
