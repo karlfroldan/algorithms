@@ -89,7 +89,7 @@
     </tr>
     <tr>
         <td>Red-Black Trees</td>
-        <td>&nbsp;</td>
+        <td>✓</td>
     </tr>
     <tr>
         <td>Interval Trees</td>
