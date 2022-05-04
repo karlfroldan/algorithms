@@ -1,5 +1,2 @@
-all : RBTDriver.cpp RBT.cpp
-	clang++ RBTDriver.cpp RBT.cpp -o RBT
-
-clean:
-	rm RBT
+all: rbt.cpp driver.cpp
+	clang++ driver.cpp rbt.cpp -o rbt
