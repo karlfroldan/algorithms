@@ -173,7 +173,7 @@
         <td>&nbsp;</td>
     </tr>
     <tr>
-        <td>Flow networks</td>
+        <td>Gale-Shapley Algorithm</td>
         <td>&nbsp;</td>
     </tr>
     <tr>
