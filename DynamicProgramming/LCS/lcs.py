@@ -3,8 +3,6 @@ def lcs(X, Y):
 
     # Table in row-major order.
     c = [[0 for _ in range(n + 1)] for _ in range(m + 1)]
-    # 1 for diagonal, 2 for up, and 3 for left.
-    d = [[0 for _ in range(n)] for _ in range(m)]
 
     for i in range(1, m + 1):
         for j in range(1, n + 1):
@@ -13,17 +11,24 @@ def lcs(X, Y):
             if X[a] == Y[b]:
                 # Move diagonally.
                 c[i][j] = c[i - 1][j - 1] + 1
-                d[i - 1][j - 1] = 1
-
-            elif c[i][j - 1] >= c[i - 1][j]:
-                # Move up
-                c[i][j] = c[i][j - 1]
-                d[i - 1][j - 1] = 2
             else:
-                # move left.
-                c[i][j] = c[i - 1][j]
-                d[i - 1][j - 1] = 3
-    return c, d
+                c[i][j] = max(c[i - 1][j], c[i][j - 1])
+
+    _lcs = []
+
+    # We start from the right-most-bottom.
+    i, j = m, n
+    while i > 0 and j > 0:
+        if X[i - 1] == Y[j - 1]:
+            _lcs.append(X[i - 1])
+            i, j = i - 1, j - 1
+        elif c[i - 1][j] > c[i][j - 1]:
+            i = i - 1
+        else:
+            j = j - 1
+
+    _lcs.reverse()
+    return ''.join(_lcs)
 
 def get_lcs(X, b, i, j):
     if i < 0 or j < 0:
@@ -43,8 +48,6 @@ if __name__ == '__main__':
 
     print(f'string 1: {s1}\nstring 2: {s2}')
 
-    l, m = lcs(s1, s2)
+    _lcs = lcs(s1, s2)
 
-    a, b = len(m), len(m[0])
-
-    get_lcs(s1, l, a, b)
+    print(f'LCS: {_lcs}')
